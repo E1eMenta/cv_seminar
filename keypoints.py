@@ -7,17 +7,16 @@ cv2.imshow("image1", image1)
 cv2.imshow("image2", image2)
 cv2.waitKey()
 
-# 1
+# Detect keypoints and calculate their discriminators
 # image1 = cv2.imread("pisa.png")
 # image2 = cv2.imread("pisa_0.jpeg")
-
 # features = cv2.SIFT_create()
 #
 # kp1, des1 = features.detectAndCompute(image, None)
 # kp2, des2 = features.detectAndCompute(result, None)
 # print(kp1, des1)
 
-# 2
+# Draw keypoints
 # for point in kp1:
 #     x, y = int(point.pt[0]), int(point.pt[1])
 #     cv2.circle(image, (x, y), 3, (0, 0, 255), -1)
@@ -26,7 +25,7 @@ cv2.waitKey()
 #     cv2.circle(result, (x, y), 3, (0, 0, 255), -1)
 
 
-# 3
+# Match keypoints
 # How can we match descriptors from two images? The easiest way is:
 # for each descriptor in dis1 find the nearest one in dis2. Choose 100 pairs
 # with minimal euclidian distance. They are the matches.
