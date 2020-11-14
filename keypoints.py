@@ -1,13 +1,28 @@
 import cv2
 
-image1 = cv2.imread("pisa.png")
-image2 = cv2.imread("pisa_0.jpeg")
+image1 = cv2.imread("frame_24.png", cv2.IMREAD_GRAYSCALE)
+image2 = cv2.imread("frame_30.png", cv2.IMREAD_GRAYSCALE)
+
+pts1 = cv2.goodFeaturesToTrack(image1, maxCorners=200, qualityLevel=0.02,
+                               minDistance=15, blockSize=3)
+pts2 = cv2.goodFeaturesToTrack(image2, maxCorners=200, qualityLevel=0.02,
+                               minDistance=15, blockSize=3)
+
+for point in pts1:
+    x, y = point[0].astype(int)
+    cv2.circle(image1, (x, y), 3, (0, 0, 255), -1)
+for point in pts2:
+    x, y = point[0].astype(int)
+    cv2.circle(image2, (x, y), 3, (0, 0, 255), -1)
 
 cv2.imshow("image1", image1)
 cv2.imshow("image2", image2)
 cv2.waitKey()
 
 # 1
+# image1 = cv2.imread("pisa.png")
+# image2 = cv2.imread("pisa_0.jpeg")
+
 # features = cv2.SIFT_create()
 #
 # kp1, des1 = features.detectAndCompute(image, None)
@@ -69,4 +84,6 @@ cv2.waitKey()
 # transformed = cv2.warpPerspective(image1, M, (w1, h1))
 
 
-#
+# Optical flow
+# image1 = cv2.imread("frame_24.png", cv2.IMREAD_GRAYSCALE)
+# image2 = cv2.imread("frame_30.png", cv2.IMREAD_GRAYSCALE)
