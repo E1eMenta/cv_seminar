@@ -1,19 +1,7 @@
 import cv2
 
-image1 = cv2.imread("frame_24.png", cv2.IMREAD_GRAYSCALE)
-image2 = cv2.imread("frame_30.png", cv2.IMREAD_GRAYSCALE)
-
-pts1 = cv2.goodFeaturesToTrack(image1, maxCorners=200, qualityLevel=0.02,
-                               minDistance=15, blockSize=3)
-pts2 = cv2.goodFeaturesToTrack(image2, maxCorners=200, qualityLevel=0.02,
-                               minDistance=15, blockSize=3)
-
-for point in pts1:
-    x, y = point[0].astype(int)
-    cv2.circle(image1, (x, y), 3, (0, 0, 255), -1)
-for point in pts2:
-    x, y = point[0].astype(int)
-    cv2.circle(image2, (x, y), 3, (0, 0, 255), -1)
+image1 = cv2.imread("pisa.png")
+image2 = cv2.imread("pisa_0.jpeg")
 
 cv2.imshow("image1", image1)
 cv2.imshow("image2", image2)
@@ -85,5 +73,26 @@ cv2.waitKey()
 
 
 # Optical flow
-# image1 = cv2.imread("frame_24.png", cv2.IMREAD_GRAYSCALE)
-# image2 = cv2.imread("frame_30.png", cv2.IMREAD_GRAYSCALE)
+# prev = cv2.imread("frame_24.png", cv2.IMREAD_GRAYSCALE)
+# curr = cv2.imread("frame_30.png", cv2.IMREAD_GRAYSCALE)
+#
+# prev_pts = cv2.goodFeaturesToTrack(prev, maxCorners=200, qualityLevel=0.02,
+#                                    minDistance=15, blockSize=3)
+# curr_pts = cv2.goodFeaturesToTrack(curr, maxCorners=200, qualityLevel=0.02,
+#                                    minDistance=15, blockSize=3)
+#
+# for point in prev_pts:
+#     x, y = point[0].astype(int)
+#     cv2.circle(prev, (x, y), 3, (0, 0, 255), -1)
+# for point in curr_pts:
+#     x, y = point[0].astype(int)
+#     cv2.circle(curr, (x, y), 3, (0, 0, 255), -1)
+#
+#
+# curr_pts, status, err = cv2.calcOpticalFlowPyrLK(prev, curr, prev_pts, None)
+
+# for prev_pt, curr_pt in zip(prev_pts, curr_pts):
+#     x1, y1 = prev_pt[0].astype(int)
+#     x2, y2 = curr_pt[0].astype(int)
+#     cv2.line(curr, (x1, y1), (x2, y2), (0, 255, 0))
+#     cv2.circle(curr, (x2, y2), 3, (0, 0, 255), -1)
